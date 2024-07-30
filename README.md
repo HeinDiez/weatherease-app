@@ -30,7 +30,7 @@ Step 1: Clone the Repository
 Clone the repository to your local machine:
 
 ```
-git clone <repository-url>
+git clone git@github.com:HeinDiez/weatherease-app.git
 cd project-root
 ```
 
