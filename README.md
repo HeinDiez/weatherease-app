@@ -11,7 +11,8 @@ Docker Compose
 
 
 # Project Structure
-```project-root/
+```
+project-root/
 ├── client/
 │   ├── Dockerfile
 │   ├── package.json
