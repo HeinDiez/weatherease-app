@@ -5,6 +5,9 @@ services:
     container_name: client_c
     ports:
       - '3000:3000'
+    volumes:
+      - ./client:/app
+      - /app/node_modules
   backend:
     build: ./backend
     container_name: backend_c
@@ -12,3 +15,9 @@ services:
       - '4000:4000'
     stdin_open: true
     tty: true
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+x-develop:
+  extension: io.docker.compose.watch

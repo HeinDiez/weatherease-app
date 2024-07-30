@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React, { useEffect } from "react";
 
@@ -15,7 +14,11 @@ function App() {
   return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+
+          <div className="bg-blue-500 text-white p-4">
+            This is a Tailwind CSS styled component.
+          </div>
+
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
