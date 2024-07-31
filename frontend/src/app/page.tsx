@@ -4,9 +4,21 @@ import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
 import { BellIcon, MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
+import {ChevronDownIcon, ChevronUpIcon} from "@heroicons/react/20/solid";
+import WindIcon from "@/components/icons/windIcon";
+import RainIcon from "@/components/icons/rainIcon";
+import PressureIcon from "@/components/icons/pressureIcon";
+import UvIcon from "@/components/icons/uvIcon";
+import SunriseIcon from "@/components/icons/sunriseIcon";
+import SunsetIcon from "@/components/icons/sunsetIcon";
 
 const Stats = dynamic(()=> import("../views/dashboard/stats"))
 const AverageTemperature = dynamic(()=> import("@/views/dashboard/averageTemperature"))
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ')
+}
+
 export default function Home() {
   const fetchData = async () => {
     const res = await fetch("http://localhost:4000/");
@@ -24,6 +36,11 @@ export default function Home() {
     { time: '10 PM', percentage: 72 },
     { time: '11 PM', percentage: 20 },
     { time: '12 AM', percentage: 0 },
+  ]
+
+  const stats = [
+    { id: 1, name: 'Sunrise', stat: '4:20 AM', icon: SunriseIcon, change: '4 hours ago', changeType: 'decrease' },
+    { id: 2, name: 'Sunset', stat: '10:20 PM', icon: SunsetIcon, change: 'in 9 hours', changeType: 'increase' },
   ]
 
   return (
@@ -67,7 +84,7 @@ export default function Home() {
 
         <AverageTemperature/>
       </div>
-      <div className='hidden col-span-4 p-10 bg-gradient-to-br from-blue-950 to-zinc-500 text-white lg:flex flex-col gap-10'>
+      <div className='hidden col-span-4 p-10 bg-gradient-to-br from-blue-950 to-zinc-500 text-white lg:flex flex-col gap-6'>
         <div className='flex justify-between items-center'>
           <div>
             <h3 className='text-2xl'>
@@ -107,12 +124,38 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='flex gap-8 flex-col'>
+        <div className='flex gap-4 flex-col'>
           <h3 className='text-xl font-bold'>Sunrise & Sunset</h3>
 
-
+          <dl className="mt-5 grid grid-cols-1 gap-5">
+            {stats.map((item) => (
+                <div
+                    key={item.id}
+                    className="relative overflow-hidden rounded-lg bg-gray-800 bg-opacity-30 px-4 pb-6 pt-5 sm:px-6 sm:pt-6"
+                >
+                  <dt>
+                    <div className="absolute rounded-md p-3">
+                      <item.icon aria-hidden="true" className="h-7 w-7 text-white"/>
+                    </div>
+                    <p className="ml-16 truncate text-sm font-light text-gray-400">{item.name}</p>
+                  </dt>
+                  <dd className="ml-16 flex items-baseline gap-3 justify-between">
+                    <p className="text-4xl font-semibold text-white">{item.stat}</p>
+                    <p
+                        className={classNames(
+                            'ml-2 flex items-baseline text-sm font-semibold text-white',
+                        )}
+                    >
+                      <span
+                          className="sr-only"> {item.changeType === 'increase' ? 'Increased' : 'Decreased'} by </span>
+                      {item.change}
+                    </p>
+                  </dd>
+                </div>
+            ))}
+          </dl>
         </div>
       </div>
     </main>
-);
+  );
 }

@@ -19,7 +19,7 @@ export default function Stats() {
     return (
         <div>
             <div className='flex justify-between '>
-                <h3 className="text-base font-semibold leading-6 text-gray-900">Today overview</h3>
+                <h3 className="text-base font-semibold leading-6 text-gray-900">Today's overview</h3>
 
                 <span className='text-sm text-primary cursor-pointer'>More Details</span>
             </div>
