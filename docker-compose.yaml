@@ -1,13 +1,18 @@
 version: "3.8"
 services:
-  client:
-    build: ./client
-    container_name: client_c
+
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_c
     ports:
       - '3000:3000'
     volumes:
-      - ./client:/app
+      - ./frontend:/app
       - /app/node_modules
+    command: sh -c "npm install && npm run dev"
+
+
   backend:
     build: ./backend
     container_name: backend_c
