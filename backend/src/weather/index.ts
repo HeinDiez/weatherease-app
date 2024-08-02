@@ -11,7 +11,7 @@ weatherRouter.get("/weather", async (req: Request, res: Response) => {
         const weatherData = await getWeather(city);
 
         // res.status(200).json(weatherData);
-        // res.status(200).json(fixtures);
+        res.status(200).json(fixtures);
     } catch (error) {
         if (error instanceof Error) {
             console.error(error.message);

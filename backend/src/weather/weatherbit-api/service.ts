@@ -1,8 +1,13 @@
 import { fetchWeatherData } from './connection';
+import WeatherDTO from './dto'
+
 
 export const getWeather = async (city: string) => {
     try {
-        return await fetchWeatherData(city);
+        const weatherData = await fetchWeatherData(city);
+        const dto = new WeatherDTO();
+        return dto.toObject(weatherData);
+
     } catch (error) {
         if (error instanceof Error) {
             throw new Error(error.message);
