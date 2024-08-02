@@ -1,6 +1,7 @@
 'use client';
+import dynamic from 'next/dynamic';
 
-import Chart from "react-apexcharts";
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 import {ApexOptions} from "apexcharts";
 
 export default function AverageTemperature() {
@@ -96,13 +97,15 @@ export default function AverageTemperature() {
 
     return (
         <div>
-            <div className='flex justify-between '>
+            <div className='flex justify-between mb-4'>
                 <h3 className="text-base font-semibold leading-6 text-gray-900">Average Temperature</h3>
 
                 <span className='text-sm text-primary cursor-pointer' >More Details</span>
             </div>
 
-            <Chart type={'line'} {...chartConfig} />
+            <div className='rounded-lg bg-gray-50'>
+                <Chart type={'line'} {...chartConfig} />
+            </div>
         </div>
     )
 }

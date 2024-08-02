@@ -4,11 +4,6 @@ import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
 import { BellIcon, MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
-import {ChevronDownIcon, ChevronUpIcon} from "@heroicons/react/20/solid";
-import WindIcon from "@/components/icons/windIcon";
-import RainIcon from "@/components/icons/rainIcon";
-import PressureIcon from "@/components/icons/pressureIcon";
-import UvIcon from "@/components/icons/uvIcon";
 import SunriseIcon from "@/components/icons/sunriseIcon";
 import SunsetIcon from "@/components/icons/sunsetIcon";
 
@@ -48,8 +43,8 @@ export default function Home() {
       <div className='col-span-12 lg:col-span-8 flex min-h-screen flex-col gap-16 p-8'>
         <div className='flex gap-5 border border-white border-b-gray-200 pb-10 justify-between items-center'>
           <div>
-            <h3 className='text-xl font-bold text-gray-700'>January 2023</h3>
-            <span className='text-sm text-gray-400'>Thursday, Jan 4, 2022</span>
+            <h3 className='text-xl font-bold text-gray-700'>January 2024</h3>
+            <span className='text-sm text-gray-400'>Thursday, Jan 4, 2024</span>
           </div>
           <div className='flex gap-3'>
               <form action="#" method="GET" className="relative flex flex-1">
@@ -111,13 +106,13 @@ export default function Home() {
             {rainChance.map((chance) => {
               return (
                   <div className='grid grid-cols-12 items-center gap-2' key={chance.time}>
-                    <span className='col-span-2'>{chance.time}</span>
-                    <div className='relative rounded-full bg-gray-300 flex-1 h-7 col-span-8'>
-                      <div className={`absolute bg-primary-400 left-0 top-0 rounded-full h-7`}
+                    <span className='col-span-2 text-sm'>{chance.time}</span>
+                    <div className='relative rounded-full bg-gray-300 flex-1 h-6 col-span-8'>
+                      <div className={`absolute bg-primary-400 left-0 top-0 rounded-full h-6`}
                            style={{width: `${chance.percentage}%`}}
                       ></div>
                     </div>
-                    <span className='col-span-2 justify-self-end'>{chance.percentage}%</span>
+                    <span className='col-span-2 justify-self-end text-sm'>{chance.percentage}%</span>
                   </div>
               )
             })}
@@ -129,25 +124,16 @@ export default function Home() {
 
           <dl className="mt-5 grid grid-cols-1 gap-5">
             {stats.map((item) => (
-                <div
-                    key={item.id}
-                    className="relative overflow-hidden rounded-lg bg-gray-800 bg-opacity-30 px-4 pb-6 pt-5 sm:px-6 sm:pt-6"
-                >
+                <div key={item.id} className="relative overflow-hidden rounded-lg bg-gray-800 bg-opacity-30 px-4 pb-6 pt-5 sm:px-6 sm:pt-6" >
                   <dt>
                     <div className="absolute rounded-md p-3">
                       <item.icon aria-hidden="true" className="h-7 w-7 text-white"/>
                     </div>
-                    <p className="ml-16 truncate text-sm font-light text-gray-400">{item.name}</p>
+                    <p className="ml-16 truncate text-sm font-light text-gray-300">{item.name}</p>
                   </dt>
                   <dd className="ml-16 flex items-baseline gap-3 justify-between">
-                    <p className="text-4xl font-semibold text-white">{item.stat}</p>
-                    <p
-                        className={classNames(
-                            'ml-2 flex items-baseline text-sm font-semibold text-white',
-                        )}
-                    >
-                      <span
-                          className="sr-only"> {item.changeType === 'increase' ? 'Increased' : 'Decreased'} by </span>
+                    <p className="text-xl font-semibold text-white">{item.stat}</p>
+                    <p className='ml-2 flex items-baseline text-sm font-medium text-white'>
                       {item.change}
                     </p>
                   </dd>

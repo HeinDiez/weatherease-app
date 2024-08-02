@@ -1,0 +1,3 @@
+const fixtures = {"count":1,"data":[{"app_temp":17,"aqi":85,"city_name":"Hilversum","clouds":96,"country_code":"NL","datetime":"2024-08-02:21","dewpt":15.9,"dhi":0,"dni":0,"elev_angle":-11.7,"ghi":0,"gust":1.5,"h_angle":-90,"lat":52.22333,"lon":5.17639,"ob_time":"2024-08-02 21:43","pod":"n","precip":0,"pres":1010,"rh":94,"slp":1011,"snow":0,"solar_rad":0,"sources":["analysis","radar","satellite"],"state_code":"07","station":"AU992","sunrise":"04:04","sunset":"19:26","temp":17,"timezone":"Europe/Amsterdam","ts":1722635002,"uv":0,"vis":16,"weather":{"icon":"c04n","description":"Overcast clouds","code":804},"wind_cdir":"ESE","wind_cdir_full":"east-southeast","wind_dir":103,"wind_spd":1}]}
+
+export { fixtures }

@@ -1,19 +1,22 @@
-# weatherease-app
-Check real time weather forcast in a flash.
+# Weather Ease
+Check real time weather forecast in a flash.
 
 
 Project Setup
-This project consists of a React frontend and a Node.js backend. The development environment is set up using Docker and Docker Compose to enable hot reloading for the client and live reloading for the backend.
+This project consists of a React frontend and a Node.js backend. 
+The development environment is set up using Docker and Docker Compose to enable hot reloading for the client and live reloading for the backend.
 
-Prerequisites
+### Prerequisites
+```angular2html
 Docker
 Docker Compose
+```
 
 
 # Project Structure
 ```
 project-root/
-├── client/
+├── frontend/
 │   ├── Dockerfile
 │   ├── package.json
 │   ├── package-lock.json
@@ -23,7 +26,6 @@ project-root/
     ├── package.json
     ├── package-lock.json
     └── (other backend files)
-
 ```
     
 # Setting Up the Project

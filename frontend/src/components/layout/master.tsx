@@ -101,7 +101,7 @@ export default function MasterLayout({ children }: Props) {
                                 className="h-8 w-auto"
                             />
                             <h3 className='font-bold'>
-                                Weatherease
+                                WeatherEase
                             </h3>
                         </div>
                         <nav className="flex flex-1 flex-col">

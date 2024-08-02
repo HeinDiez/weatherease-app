@@ -36,25 +36,22 @@ export default function Stats() {
                             </div>
                             <p className="ml-16 truncate text-sm font-light text-gray-500">{item.name}</p>
                         </dt>
-                        <dd className="ml-16 flex items-baseline pb-6 sm:pb-7 gap-3">
-                            <p className="text-4xl font-semibold text-gray-900">{item.stat}</p>
-                            <p
-                                className={classNames(
-                                    item.changeType === 'increase' ? 'text-green-600' : 'text-red-600',
-                                    'ml-2 flex items-baseline text-sm font-semibold',
-                                )}
-                            >
-                                {item.changeType === 'increase' ? (
-                                    <ChevronUpIcon aria-hidden="true"
-                                                 className="h-5 w-5 flex-shrink-0 self-center text-green-500"/>
-                                ) : (
-                                    <ChevronDownIcon aria-hidden="true"
-                                                   className="h-5 w-5 flex-shrink-0 self-center text-red-500"/>
-                                )}
+                        <dd className="ml-16 flex items-baseline pb-6 sm:pb-7 gap-3 justify-between">
+                            <p className="text-2xl sm:text-4xl font-semibold text-gray-900">{item.stat}</p>
+                            <p className={'ml-2 flex items-baseline text-sm font-light'}>
+                                <span className='flex'>
+                                    {item.changeType === 'increase' ? (
+                                        <ChevronUpIcon aria-hidden="true"
+                                                     className="h-5 w-5 flex-shrink-0 self-center text-green-500"/>
+                                    ) : (
+                                        <ChevronDownIcon aria-hidden="true"
+                                                       className="h-5 w-5 flex-shrink-0 self-center text-red-500"/>
+                                    )}
 
-                                <span
-                                    className="sr-only"> {item.changeType === 'increase' ? 'Increased' : 'Decreased'} by </span>
-                                {item.change}
+                                    <span
+                                        className="sr-only"> {item.changeType === 'increase' ? 'Increased' : 'Decreased'} by </span>
+                                    {item.change}
+                                </span>
                             </p>
                             <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
                                 <div className="text-sm">
