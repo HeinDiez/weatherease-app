@@ -1,5 +1,5 @@
 import React from 'react';
-import { twmerge } from '@/utils/tailwindMerger';
+import { twMerge } from '@/utils/tailwindMerger';
 import Skeleton from "@/components/feedback/skeleton";
 import Image from 'next/image'
 
@@ -18,29 +18,32 @@ interface WeatherDisplayProps {
 const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ temperature, icon, className = '' }) => {
     return (
         <div
-            className={twmerge('flex justify-between items-center pt-3 pb-7 border border-t-0 border-x-0 border-b-gray-400', className)}>
+            className={twMerge('flex justify-between items-center pt-3 pb-7 border border-t-0 border-x-0 border-b-gray-400', className)}>
 
-            <div className='inline-flex'>
+            <div className='flex flex-col'>
                 {temperature ?
-                    <h1 className='text-6xl'>{temperature}</h1> :
-                    <Skeleton className='h-[44px] w-[50px] dark:bg-white mb-0'/>
+                    <div className='inline-flex'>
+                        <h1 className='text-6xl'>{temperature}</h1>
+                        <span className='text-4xl text-nowrap'>° C</span>
+                    </div> :
+                    <Skeleton className='h-[50px] w-[90px] dark:bg-gray-600'/>
                 }
-                <span className='text-4xl text-nowrap'>° C</span>
+                {icon ?
+                <span
+                    className='text-sm font-light'>{icon?.description}</span>:
+                    <Skeleton className='h-[15px] w-[150px] mb-0 dark:bg-gray-600'/>
+                }
             </div>
-
             {icon ?
-                <div className='flex flex-col'>
+                <div className='flex flex-col items-end'>
                     <Image
                         src={`https://cdn.weatherbit.io/static/img/icons/${icon?.icon}.png`}
-                        width={70}
-                        height={70}
+                        width={85}
+                        height={85}
                         alt={icon?.description ?? ''}
                     />
-                    <span className='text-sm font-light'>{icon?.description}</span>
                 </div>:
-                <div>
-                    <Skeleton className='h-[44px] w-[50px] dark:bg-gray-300 mb-0'/>
-                </div>
+                <Skeleton className='h-[75px] w-[75px] dark:bg-gray-500 mb-0'/>
             }
 
         </div>

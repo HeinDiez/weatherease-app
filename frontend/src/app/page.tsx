@@ -11,14 +11,16 @@ const Toolbar = dynamic(()=> import("@/views/dashboard/toolbar"))
 const Stats = dynamic(()=> import("@/views/dashboard/stats"))
 const Header = dynamic(()=> import("@/components/typography/header"))
 const AverageTemperature = dynamic(()=> import("@/views/dashboard/averageTemperature"))
+const LocationTimeDisplay = dynamic(()=> import("@/views/dashboard/locationTimeDisplay"))
+const WeatherDisplay = dynamic(()=> import("@/views/dashboard/weatherDisplay"))
+const ChanceOfRain = dynamic(()=> import("@/views/dashboard/chanceOfRain"))
 
 // ** Icon Imports
 import { SunriseIcon, SunsetIcon } from "@/components/icons";
 import { socket } from '@/lib/socket'
 import { debounce } from 'lodash';
-import LocationTimeDisplay from "@/views/dashboard/locationTimeDisplay";
-import WeatherDisplay from "@/views/dashboard/weatherDisplay";
 import { WeatherIcon } from '@/views/dashboard/weatherDisplay'
+import SunriseSunsetStats from "@/views/dashboard/sunriseSunsetStats";
 
 
 export type weatherData = {
@@ -73,20 +75,6 @@ export default function Home() {
     };
   }, [socket]);
 
-  const rainChance = [
-    { time: '7 PM', percentage: 44 },
-    { time: '8 PM', percentage: 30 },
-    { time: '9 PM', percentage: 67 },
-    { time: '10 PM', percentage: 72 },
-    { time: '11 PM', percentage: 20 },
-    { time: '12 AM', percentage: 0 },
-  ]
-
-  const stats = [
-    { id: 1, name: 'Sunrise', stat: weather?.sunrise ?? null, icon: SunriseIcon, change: '4 hours ago', changeType: 'decrease' },
-    { id: 2, name: 'Sunset', stat: weather?.sunset ?? null, icon: SunsetIcon, change: 'in 9 hours', changeType: 'increase' },
-  ]
-
   return (
     <main className="grid grid-cols-12 min-h-screen gap-5">
       <div className='col-span-12 lg:col-span-8 flex min-h-screen flex-col gap-16 p-8'>
@@ -102,50 +90,15 @@ export default function Home() {
             details={weather?.country_code ?? null}
         />
 
-        <WeatherDisplay icon={weather?.weather_icon ?? null} temperature={weather?.temperature ?? null}/>
+        <WeatherDisplay
+            icon={weather?.weather_icon ?? null}
+            temperature={weather?.temperature ?? null}/>
 
-        <div className='flex gap-8 flex-col'>
-          <Header>Chance of rain</Header>
+        <ChanceOfRain />
 
-          <div className='flex gap-4 flex-col'>
-            {rainChance.map((chance) => {
-              return (
-                  <div className='grid grid-cols-12 items-center gap-2' key={chance.time}>
-                    <span className='col-span-2 text-sm'>{chance.time}</span>
-                    <div className='relative rounded-full bg-gray-300 flex-1 h-6 col-span-8'>
-                      <div className={`absolute bg-primary-400 left-0 top-0 rounded-full h-6`}
-                           style={{width: `${chance.percentage}%`}}
-                      ></div>
-                    </div>
-                    <span className='col-span-2 justify-self-end text-sm'>{chance.percentage}%</span>
-                  </div>
-              )
-            })}
-          </div>
-        </div>
-
-        <div className='flex gap-4 flex-col'>
-          <Header>Sunrise & Sunset</Header>
-
-          <dl className=" grid grid-cols-1 gap-5">
-            {stats.map((item) => (
-                <div key={item.id} className="relative overflow-hidden rounded-lg bg-gray-800 bg-opacity-30 px-4 pb-6 pt-5 sm:px-6 sm:pt-6" >
-                  <dt>
-                    <div className="absolute rounded-md p-3">
-                      <item.icon aria-hidden="true" className="h-7 w-7 text-white"/>
-                    </div>
-                    <p className="ml-16 truncate text-sm font-light text-gray-300">{item.name}</p>
-                  </dt>
-                  <dd className="ml-16 flex items-baseline gap-3 justify-between">
-                    <p className="text-xl font-semibold text-white">{item.stat}</p>
-                    <p className='ml-2 flex items-baseline text-sm font-medium text-white'>
-                      {item.change}
-                    </p>
-                  </dd>
-                </div>
-            ))}
-          </dl>
-        </div>
+        <SunriseSunsetStats
+            sunrise={weather?.sunrise ?? null}
+            sunset={weather?.sunset ?? null} />
       </div>
     </main>
   );

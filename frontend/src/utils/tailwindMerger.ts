@@ -1,3 +1,3 @@
-export const twmerge = (...classes: string[]) => {
-    return classes.filter(Boolean).join(' ')
-}
+import { twMerge } from 'tailwind-merge'
+
+export { twMerge }

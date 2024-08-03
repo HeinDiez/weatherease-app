@@ -1,5 +1,5 @@
 import React from 'react';
-import { twmerge } from '@/utils/tailwindMerger'
+import { twMerge } from '@/utils/tailwindMerger'
 
 interface SkeletonProps {
     className?: string;
@@ -8,8 +8,8 @@ interface SkeletonProps {
 const Skeleton: React.FC<SkeletonProps> = ({ className = '' }) => {
     return (
         <div className={
-            twmerge('' +
-                'bg-gray-200 animate-pulse rounded-xl dark:bg-gray-700 mb-2.5 h-2 w-full',
+            twMerge(
+                'h-2 w-full animate-pulse rounded-xl dark:bg-gray-800 dark:bg-opacity-40 mb-2.5 ',
                 className
             )}></div>
     );

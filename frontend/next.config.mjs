@@ -2,7 +2,14 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['cdn.weatherbit.io'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'cdn.weatherbit.io',
+                port: '',
+                pathname: '/static/img/icons/**',
+            },
+        ],
     },
 };
 
