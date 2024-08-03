@@ -3,18 +3,21 @@
 import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
-import { BellIcon, MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
-import SunriseIcon from "@/components/icons/sunriseIcon";
-import SunsetIcon from "@/components/icons/sunsetIcon";
+// ** Hook imports
+import useGeolocation from '@/lib/useGeolocation'
 
-const Stats = dynamic(()=> import("../views/dashboard/stats"))
+// ** Component Imports
+const Stats = dynamic(()=> import("@/views/dashboard/stats"))
 const AverageTemperature = dynamic(()=> import("@/views/dashboard/averageTemperature"))
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
-}
+// ** Icon Imports
+import { BellIcon, MagnifyingGlassIcon, UserIcon } from '@heroicons/react/24/outline'
+import { SunriseIcon, SunsetIcon } from "@/components/icons";
 
 export default function Home() {
+  const { latitude, longitude, error } = useGeolocation();
+
+  console.log(latitude, longitude, error, "check here")
   const fetchData = async () => {
     const res = await fetch("http://localhost:4000/");
     console.log(res);

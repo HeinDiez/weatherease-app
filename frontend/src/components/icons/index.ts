@@ -1,0 +1,6 @@
+export { default as PressureIcon } from './pressureIcon'
+export { default as RainIcon } from './rainIcon'
+export { default as SunriseIcon } from './sunriseIcon'
+export { default as SunsetIcon } from './sunsetIcon'
+export { default as UvIcon } from './uvIcon'
+export { default as WindIcon } from './windIcon'
