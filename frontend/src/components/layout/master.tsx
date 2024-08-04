@@ -8,7 +8,6 @@ import { twMerge } from "@/utils/tailwindMerger";
 import Sidebar from "@/components/layout/sections/sidebar";
 import Headers from '@/components/layout/sections/header'
 import Dialog from '@/components/layout/sections/dialog'
-import LogoIcon from "@/components/icons/logo";
 
 type Props ={
     children: ReactNode;

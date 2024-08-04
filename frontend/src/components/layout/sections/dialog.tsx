@@ -1,9 +1,6 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import LogoIcon from "@/components/icons/logo";
-import {
-    UserCircleIcon,
-    Cog6ToothIcon, Bars3Icon, XMarkIcon
-} from '@heroicons/react/24/outline'
+import {  XMarkIcon } from '@heroicons/react/24/outline'
 import {twMerge} from "@/utils/tailwindMerger";
 import {Dialog, DialogBackdrop, DialogPanel, TransitionChild} from "@headlessui/react";
 import { Navigation } from './sidebar'
