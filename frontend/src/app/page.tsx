@@ -9,19 +9,16 @@ import useGeolocation from '@/lib/useGeolocation'
 // ** Component Imports
 const Toolbar = dynamic(()=> import("@/views/dashboard/toolbar"))
 const Stats = dynamic(()=> import("@/views/dashboard/stats"))
-const Header = dynamic(()=> import("@/components/typography/header"))
 const AverageTemperature = dynamic(()=> import("@/views/dashboard/averageTemperature"))
 const LocationTimeDisplay = dynamic(()=> import("@/views/dashboard/locationTimeDisplay"))
 const WeatherDisplay = dynamic(()=> import("@/views/dashboard/weatherDisplay"))
 const ChanceOfRain = dynamic(()=> import("@/views/dashboard/chanceOfRain"))
+const SunriseSunsetStats = dynamic(()=> import("@/views/dashboard/sunriseSunsetStats"))
 
 // ** Icon Imports
-import { SunriseIcon, SunsetIcon } from "@/components/icons";
 import { socket } from '@/lib/socket'
 import { debounce } from 'lodash';
 import { WeatherIcon } from '@/views/dashboard/weatherDisplay'
-import SunriseSunsetStats from "@/views/dashboard/sunriseSunsetStats";
-
 
 export type weatherData = {
   wind_speed: number;

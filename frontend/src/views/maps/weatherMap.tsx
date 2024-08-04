@@ -35,8 +35,11 @@ const WeatherMap: React.FC = () => {
                     url={`${process.env.NEXT_PUBLIC_SERVER_API_URL}api/maps/{z}/{x}/{y}/${selectedOption}`}
                     attribution='&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a> contributors'
                 />
-                <div className='absolute top-4 right-4 z-[1010]'>
-                    <Dropdown options={options} onSelect={handleSelect}/>
+                <div className='absolute top-4 right-4 z-[900]'>
+                    <Dropdown
+                        options={options}
+                        onSelect={handleSelect}
+                        model={selectedOption}/>
                 </div>
             </MapContainer>
         </div>

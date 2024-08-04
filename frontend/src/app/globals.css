@@ -26,8 +26,13 @@
 /*    rgb(var(--background-start-rgb));*/
 /*}*/
 
-/*@layer utilities {*/
-/*  .text-balance {*/
-/*    text-wrap: balance;*/
-/*  }*/
-/*}*/
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+    .leaflet-left {
+        @apply right-5;
+    }
+}
+

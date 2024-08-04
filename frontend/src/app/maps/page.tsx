@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 
 const WeatherMap = dynamic(() => import('@/views/maps/weatherMap'), { ssr: false });
 
-const MapsPage: React.FC = () => {
+const Maps: React.FC = () => {
     return (
         <div style={{ height: '100vh', width: '100%' }}>
             <WeatherMap />
@@ -12,4 +12,4 @@ const MapsPage: React.FC = () => {
     );
 };
 
-export default MapsPage;
+export default Maps;
