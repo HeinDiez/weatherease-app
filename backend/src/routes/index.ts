@@ -5,6 +5,6 @@ import { getMapData } from '../controller/mapController'
 const weatherRouter = Router();
 
 weatherRouter.get('/weather', getWeatherData);
-weatherRouter.get('/maps/:z/:x/:y', getMapData);
+weatherRouter.get('/maps/:z/:x/:y/:layer', getMapData);
 
 export default weatherRouter;
