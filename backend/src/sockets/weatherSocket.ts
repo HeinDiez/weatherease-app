@@ -1,5 +1,5 @@
 import { Socket } from 'socket.io';
-import { getWeather } from '../weatherbit-api/service';
+import { getWeather } from '../services/weatherbit-api/service';
 
 export const handleWeatherSocket = (socket: Socket) => {
     socket.on('getWeather', async (city = 'Hilversum') => {

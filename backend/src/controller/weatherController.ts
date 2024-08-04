@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getWeather } from '../weatherbit-api/service';
+import { getWeather } from '../services/weatherbit-api/service';
 
 export const getWeatherData = async (req: Request, res: Response) => {
     try {

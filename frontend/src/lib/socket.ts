@@ -1,6 +1,7 @@
 import io from "socket.io-client";
 
-const socket = io('http://localhost:4000', {
+const URL = process.env.NEXT_PUBLIC_SERVER_API_URL ?? ''
+const socket = io(URL, {
     transports: ['websocket', 'polling'],
     withCredentials: false,
 });

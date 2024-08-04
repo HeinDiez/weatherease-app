@@ -1,10 +1,12 @@
 import { Request, Response } from 'express';
+import { fetchMapData } from '../services/openweather-api/connection'
 
-export const getWeatherData = async (req: Request, res: Response) => {
+export const getMapData = async (req: Request, res: Response) => {
     try {
-        const city = req.query.city as string || 'Hilversum';
-
-        res.status(200).json(weatherData);
+        const { z, x, y } = req.params;
+        const imageData = await fetchMapData(z, x, y);
+        res.set('Content-Type', 'image/png');
+        res.send(imageData);
     } catch (error) {
         if (error instanceof Error) {
             console.error(error.message);
