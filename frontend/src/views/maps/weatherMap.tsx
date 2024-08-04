@@ -6,7 +6,7 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const WeatherMap: React.FC = () => {
-    const API_KEY = 'a98acb4cc5f6f1ee468d2b429c2193ad';
+    const API_KEY = '';
 
     return (
         <MapContainer center={[51.505, -0.09]} zoom={5} style={{ height: '100vh', width: '100%' }}>
