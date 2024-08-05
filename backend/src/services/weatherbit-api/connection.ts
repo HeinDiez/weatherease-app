@@ -1,11 +1,17 @@
 import axios from 'axios';
 import { key, url } from './config'
 
-export const fetchWeatherData = async (city: string) => {
+export type params = {
+    city: string,
+    lat: string,
+    lon: string,
+}
+export const fetchWeatherData = async ({city, lat, lon}: params) => {
     try {
         const response = await axios.get(url, {
             params: {
-                city,
+                lat,
+                lon,
                 key: key
             }
         });

@@ -1,11 +1,17 @@
 import { Socket } from 'socket.io';
 import { getWeather } from '../services/weatherbit-api/service';
+import {weatherQuerySchema} from "../rules/weatherFormSchema";
 
 export const handleWeatherSocket = (socket: Socket) => {
-    socket.on('getWeather', async (city = 'Hilversum') => {
+    socket.on('getWeather', async (city, lat, lon) => {
         try {
-            console.log('New data request');
-            const weatherData = await getWeather(city);
+            const { error, value } = weatherQuerySchema.validate({city, lat, lon});
+            if (error) {
+                socket.emit('weatherUpdate', { error: error.details[0].message });
+                return
+            }
+            console.log('New data request', {city, lat, lon});
+            const weatherData = await getWeather(value);
             socket.emit('weatherUpdate', weatherData);
         } catch (error) {
             if (error instanceof Error) {

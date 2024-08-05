@@ -1,4 +1,8 @@
 {
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+  },
   "extends": "./tsconfig.json",
   "include": ["src/**/*.ts", "src/**/__tests__/**/*.ts"]
 }

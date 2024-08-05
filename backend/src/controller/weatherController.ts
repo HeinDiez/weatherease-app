@@ -1,11 +1,15 @@
 import { Request, Response } from 'express';
 import { getWeather } from '../services/weatherbit-api/service';
+import { weatherQuerySchema } from '../rules/weatherFormSchema'
 
 export const getWeatherData = async (req: Request, res: Response) => {
     try {
-        const city = req.query.city as string || 'Hilversum';
-        const weatherData = await getWeather(city);
+        const { error, value } = weatherQuerySchema.validate(req.query);
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
 
+        const weatherData = await getWeather(value);
         res.status(200).json(weatherData);
     } catch (error) {
         if (error instanceof Error) {

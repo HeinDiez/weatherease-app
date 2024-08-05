@@ -38,10 +38,9 @@ export type weatherData = {
 
 export default function Home() {
     const pathname = usePathname()
+    const { latitude, longitude, error } = useGeolocation();
+
     const [weather, setWeather] = useState<weatherData | null>(null);
-    // const { latitude, longitude, error } = useGeolocation();
-    //
-    // console.log(latitude, longitude, error, "check here")
 
     useEffect(() => {
         const debouncedSetWeather = debounce((data: any) => {
@@ -51,10 +50,15 @@ export default function Home() {
         }, 1000);
 
         socket.on('connect', () => {
-            socket.emit('getWeather', 'Hilversum');
+            console.log(latitude, longitude, error)
+            socket.emit('getWeather', 'Amsterdam', `${latitude}`, `${longitude}`);
         });
 
         socket.on('weatherUpdate', (data) => {
+            if (data.error) {
+                console.log('Something when wrong:', data.error)
+                return
+            }
             debouncedSetWeather(data);
         });
 
@@ -73,7 +77,7 @@ export default function Home() {
             socket.off('disconnect');
             socket.off('connect_error');
         };
-    }, []);
+    }, [latitude, longitude, error]);
 
     return (
         <MasterLayout path={pathname}>

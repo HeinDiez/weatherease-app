@@ -1,12 +1,12 @@
-import { fetchWeatherData } from './connection';
+import { fetchWeatherData, params } from './connection';
 import WeatherDTO from './dto'
-import {  fixtures } from "./fixtures";
+// import {  fixtures } from "./fixtures";
 
-export const getWeather = async (city: string) => {
+export const getWeather = async (location: params) => {
     try {
-        // const weatherData = await fetchWeatherData(city);
+        const weatherData = await fetchWeatherData(location);
         const dto = new WeatherDTO();
-        return dto.toObject(fixtures);
+        return dto.toObject(weatherData);
 
     } catch (error) {
         if (error instanceof Error) {

@@ -10,9 +10,9 @@ interface LocationTimeDisplayProps {
 const LocationTimeDisplay: FC<LocationTimeDisplayProps> = ({ location, details }) => {
     return (
         <div className='flex justify-between items-center'>
-            <div>
+            <div className='text-balance'>
                 {location ?
-                    <h3 className='text-xl xl:text-2xl'>{location}</h3> :
+                    <h3 className='text-xl xl:text-2xl '>{location}</h3> :
                     <Skeleton className='h-[28px] w-[154px] mb-0 dark:bg-gray-600'/>
                 }
                 {details ?
@@ -21,7 +21,7 @@ const LocationTimeDisplay: FC<LocationTimeDisplayProps> = ({ location, details }
                 }
             </div>
             {location ?
-                <h4 className='text-lg xl:text-xl font-bold' suppressHydrationWarning>{formatTime(new Date())}</h4>:
+                <h4 className='text-lg xl:text-xl font-bold text-end' suppressHydrationWarning>{formatTime(new Date())}</h4>:
                 <Skeleton className='h-[26px] w-[80px] mb-0 dark:bg-gray-500'/>
             }
         </div>
