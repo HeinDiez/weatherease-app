@@ -1,18 +1,16 @@
-'use client';
-
-import dynamic from 'next/dynamic';
 import {BellIcon, MagnifyingGlassIcon, UserIcon} from "@heroicons/react/24/outline";
+import {formatFullMonthYear, formatLongLocalized} from '@/utils/useDateFormatter'
 
 export default function Toolbar() {
 
     return (
         <div className='flex gap-5 border border-white border-b-gray-200 pb-10 justify-between items-center'>
             <div>
-                <h3 className='text-xl font-bold text-gray-700'>January 2024</h3>
-                <span className='text-sm text-gray-400'>Thursday, Jan 4, 2024</span>
+                <h3 className='text-xl font-bold text-gray-700' suppressHydrationWarning>{formatFullMonthYear(new Date())}</h3>
+                <span className='text-sm text-gray-400' suppressHydrationWarning>{formatLongLocalized(new Date())} </span>
             </div>
             <div className='flex gap-3'>
-                <form action="#" method="GET" className="relative flex flex-1">
+                <form action="#" method="GET" className="relative hidden lg:flex flex-1">
                     <label htmlFor="search-field" className="sr-only">
                         Search
                     </label>

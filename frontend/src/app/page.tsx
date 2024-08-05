@@ -78,14 +78,14 @@ export default function Home() {
     return (
         <MasterLayout path={pathname}>
             <main className="grid grid-cols-12 min-h-screen gap-5">
-                <div className='col-span-12 lg:col-span-8 flex min-h-screen flex-col gap-16 p-8'>
+                <div className='col-span-12 md:col-span-8 flex min-h-screen flex-col gap-16 p-8'>
                     <Toolbar />
 
-                    <Stats/>
+                    <Stats wind={weather?.wind_speed} pressure={weather?.pressure} uvIndex={weather?.uv_index}/>
 
                     <AverageTemperature/>
                 </div>
-                <div className='hidden col-span-4 p-10 bg-gradient-to-br from-blue-950 to-zinc-500 text-white lg:flex flex-col gap-6'>
+                <div className='hidden col-span-4 py-10 px-6 xl:px-10 bg-gradient-to-br from-blue-950 to-zinc-500 text-white md:flex flex-col gap-6'>
                     <LocationTimeDisplay
                         location={weather?.city_name ?? null}
                         details={weather?.country_code ?? null}

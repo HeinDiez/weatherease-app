@@ -23,14 +23,14 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ temperature, icon, clas
             <div className='flex flex-col'>
                 {temperature ?
                     <div className='inline-flex'>
-                        <h1 className='text-6xl'>{temperature}</h1>
+                        <h1 className='text-4xl xl:text-6xl'>{temperature}</h1>
                         <span className='text-4xl text-nowrap'>° C</span>
                     </div> :
                     <Skeleton className='h-[50px] w-[90px] dark:bg-gray-600'/>
                 }
                 {icon ?
                 <span
-                    className='text-sm font-light'>{icon?.description}</span>:
+                    className='text-xs xl:text-sm font-light text-gray-400'>{icon?.description}</span>:
                     <Skeleton className='h-[15px] w-[150px] mb-0 dark:bg-gray-600'/>
                 }
             </div>

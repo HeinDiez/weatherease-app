@@ -23,13 +23,13 @@ export default function ChanceOfRain() {
                 {rainChance.map((chance) => {
                     return (
                         <div className='grid grid-cols-12 items-center gap-2' key={chance.time}>
-                            <span className='col-span-2 text-sm'>{chance.time}</span>
-                            <div className='relative rounded-full bg-gray-300 flex-1 h-6 col-span-8'>
-                                <div className={`absolute bg-primary-400 left-0 top-0 rounded-full h-6`}
+                            <span className='col-span-3 xl:col-span-2 text-xs lg:text-sm line-clamp-1'>{chance.time}</span>
+                            <div className='relative rounded-full bg-gray-300 flex-1 h-4 lg:h-5 col-span-6 xl:col-span-8'>
+                                <div className={`absolute bg-primary-400 left-0 top-0 rounded-full h-4 lg:h-5`}
                                      style={{width: `${chance.percentage}%`}}
                                 ></div>
                             </div>
-                            <span className='col-span-2 justify-self-end text-sm'>{chance.percentage}%</span>
+                            <span className='col-span-3 xl:col-span-2 justify-self-end text-xs lg:text-sm'>{chance.percentage}%</span>
                         </div>
                     )
                 })}
