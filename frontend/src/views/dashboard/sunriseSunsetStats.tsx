@@ -44,7 +44,7 @@ const SunriseSunsetStats = ({ sunrise, sunset } : SunriseSunsetStatsProps) => {
                                 <p className="ml-2 flex items-baseline text-sm font-medium text-gray-400">
                                     {item.change}
                                 </p>:
-                                <Skeleton className='h-[25px] w-[90px] mb-0 dark:bg-gray-500'/>
+                                <Skeleton className='h-[12px] w-[60px] mb-0 dark:bg-gray-500'/>
                             }
                         </dd>
                     </div>

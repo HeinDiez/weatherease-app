@@ -35,11 +35,14 @@ const Header = ({ sidebarOpen, setSidebarOpen, classNames, navigation }: Sidebar
                         </div>
                     </TransitionChild>
                     <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-200 px-6 pb-2">
-                        <div className="flex h-16 shrink-0 items-center">
-                            <LogoIcon className='h-10 w-10' />
+                        <div className="flex gap-3 h-16 shrink-0 items-center text-primary">
+                            <LogoIcon className='h-10 w-10'/>
+                            <h3 className='font-bold'>
+                                WeatherEase
+                            </h3>
                         </div>
                         <nav className="flex flex-1 flex-col">
-                            <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                        <ul role="list" className="flex flex-1 flex-col gap-y-7">
                                 <li>
                                     <ul role="list" className="-mx-2 space-y-1">
                                         {navigation.map((item) => (

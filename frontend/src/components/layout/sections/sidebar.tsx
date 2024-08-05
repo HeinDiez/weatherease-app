@@ -23,7 +23,7 @@ const Sidebar = ({ navigation, classNames }: SidebarProps) => {
     return (
         <div className={twMerge("hidden lg:fixed lg:inset-y-0 lg:z-50 lg:w-72 lg:flex-col", classNames)}>
             <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-100 px-6">
-                <div className="flex gap-3 h-16 shrink-0 items-center text-primary-700">
+                <div className="flex gap-3 h-16 shrink-0 items-center text-primary">
                     <LogoIcon className='h-10 w-10 fill-primary' />
                     <h3 className='font-bold'>
                         WeatherEase
