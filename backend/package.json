@@ -12,7 +12,8 @@
     "test-ui": "npx majestic",
     "test": "jest --watch",
     "prod-build": "npx tsc",
-    "prod-start": "npm start"
+    "prod-start": "npm start",
+    "vercel-build": "tsc"
   },
   "dependencies": {
     "axios": "^1.7.3",
