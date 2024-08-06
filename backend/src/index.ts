@@ -25,7 +25,7 @@ const server = http.createServer(app);
 setupSocketIO(server);
 
 if (process.env.NODE_ENV !== "test" || require.main === module) {
-  app.listen(port, () => {
+  server.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
   });
 }
