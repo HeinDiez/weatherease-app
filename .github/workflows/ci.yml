@@ -10,7 +10,7 @@ on:
 
 jobs:
   test-frontend:
-    name: Test Frontend
+    name: Unit Test Frontend
     runs-on: ubuntu-latest
 
     defaults:
@@ -35,8 +35,11 @@ jobs:
       - name: Run frontend tests
         run: npm run test
 
+      - name: Run linter
+        run: npm run lint
+
   test-backend:
-    name: Test Backend
+    name: Unit Test Backend
     runs-on: ubuntu-latest
 
     defaults:
