@@ -1,9 +1,9 @@
 import Joi from 'joi';
 
 const weatherQuerySchema = Joi.object({
-    city: Joi.string().when('lat', { is: Joi.exist(), then: Joi.optional(), otherwise: Joi.required() }),
-    lat: Joi.string().optional(),
-    lon: Joi.string().optional()
+    city: Joi.string().optional(),
+    lat: Joi.string().required(),
+    lon: Joi.string().required()
 }).or('city', 'lat');
 
 export {weatherQuerySchema}

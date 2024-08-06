@@ -1,6 +1,6 @@
 import { Socket } from 'socket.io';
 import { getWeather } from '../services/weatherbit-api/service';
-import {weatherQuerySchema} from "../rules/weatherFormSchema";
+import { weatherQuerySchema } from "../rules/weatherFormSchema";
 
 export const handleWeatherSocket = (socket: Socket) => {
     socket.on('getWeather', async (city, lat, lon) => {

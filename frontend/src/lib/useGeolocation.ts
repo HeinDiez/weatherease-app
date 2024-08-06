@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 interface LocationState {
-    latitude: number | null;
-    longitude: number | null;
+    latitude: string | null;
+    longitude: string | null;
     error: string | null;
 }
 
@@ -12,6 +12,8 @@ const useGeolocation = (): LocationState => {
         longitude: null,
         error: null,
     });
+    const [attempts, setAttempts] = useState<number>(0);
+    const maxAttempts = 3;
 
     useEffect(() => {
         if (!('geolocation' in navigator)) {
@@ -23,23 +25,33 @@ const useGeolocation = (): LocationState => {
         }
 
         const onSuccess = (position: GeolocationPosition) => {
-            setLocation({
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-                error: null,
+            setLocation((prev) => {
+                return {
+                    ...prev,
+                    latitude: position.coords.latitude.toString(),
+                    longitude: position.coords.longitude.toString(),
+                    error: null,
+                }
             });
+            setAttempts(0);
         };
 
         const onError = (error: GeolocationPositionError) => {
-            setLocation((prevState) => ({
-                ...prevState,
-                error: error.message,
-            }));
+            setAttempts((prevAttempts) => prevAttempts + 1);
+
+            if (attempts < maxAttempts) {
+                navigator.geolocation.getCurrentPosition(onSuccess, onError, geoOptions);
+            } else {
+                setLocation((prevState) => ({
+                    ...prevState,
+                    error: error.message,
+                }));
+            }
         };
 
         const geoOptions = {
             enableHighAccuracy: true,
-            timeout: 5000,
+            timeout: 10000,
             maximumAge: 0,
         };
 
@@ -48,9 +60,9 @@ const useGeolocation = (): LocationState => {
         return () => {
             navigator.geolocation.clearWatch(geoWatcher);
         };
-    }, []);
+    }, [attempts]);
 
-    return location;
+    return {...location};
 };
 
 export default useGeolocation;

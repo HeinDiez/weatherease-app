@@ -27,21 +27,21 @@ const SunriseSunsetStats = ({ sunrise, sunset } : SunriseSunsetStatsProps) => {
                 {stats.map((item) => (
                     <div
                         key={item.id}
-                        className="relative overflow-hidden rounded-lg bg-gray-800 bg-opacity-30 px-4 pb-6 pt-5 sm:px-6 sm:pt-6"
+                        className="relative overflow-hidden rounded-lg bg-gray-200 md:bg-gray-800 bg-opacity-30 px-4 pb-6 pt-5 sm:px-6 sm:pt-6"
                     >
                         <dt>
                             <div className="absolute rounded-md p-3">
-                                <item.icon aria-hidden="true" className="h-7 w-7 text-white" />
+                                <item.icon aria-hidden="true" className="h-7 w-7 text-gray-700 md:text-white" />
                             </div>
-                            <p className="ml-16 truncate text-sm font-light text-gray-300">{item.name}</p>
+                            <p className="ml-16 truncate text-sm font-light text-gray-700 md:text-gray-300">{item.name}</p>
                         </dt>
                         <dd className="ml-16 flex flex-col xl:flex-row items-baseline gap-3 justify-between relative">
                             {item.stat ?
-                                <p className="text-xl font-semibold text-white">{item.stat}</p>:
+                                <p className="text-xl font-semibold text-gray-700 md:text-white">{item.stat}</p>:
                                 <Skeleton className='h-[25px] w-[50px] mb-0 dark:bg-gray-500'/>
                             }
                             {item.stat ?
-                                <p className="ml-2 flex items-baseline text-sm font-medium text-gray-400">
+                                <p className="ml-2 flex items-baseline text-sm font-medium text-gray-700 md:text-gray-400 self-end">
                                     {item.change}
                                 </p>:
                                 <Skeleton className='h-[12px] w-[60px] mb-0 dark:bg-gray-500'/>

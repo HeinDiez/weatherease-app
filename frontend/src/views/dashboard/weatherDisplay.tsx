@@ -18,7 +18,7 @@ interface WeatherDisplayProps {
 const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ temperature, icon, className = '' }) => {
     return (
         <div
-            className={twMerge('flex justify-between items-center pt-3 pb-7 border border-t-0 border-x-0 border-b-gray-400', className)}>
+            className={twMerge('flex justify-between items-center pt-3 pb-7 border border-t-0 border-x-0 border-b-gray-200', className)}>
 
             <div className='flex flex-col'>
                 {temperature ?
