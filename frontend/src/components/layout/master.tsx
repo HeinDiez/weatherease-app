@@ -40,7 +40,7 @@ export default function MasterLayout({ children, path, useDialogOnly = false }: 
                     {useDialogOnly &&
                         <button type="button" onClick={() => setSidebarOpen(true)}
                                 className="-m-2.5 p-1.5 text-gray-900 absolute top-5 left-16 z-[1000] rounded-lg bg-gray-50 outline-gray-300 hover:bg-gray-50">
-                            <span className="sr-only">Open sidebar</span>
+                            <span className="sr-only">Open sidebar - useDialogOnly</span>
                             <Bars3Icon aria-hidden="true" className="h-6 w-6"/>
                         </button>
                     }

@@ -54,7 +54,7 @@ export function formatFullMonthYear(date: string | Date | null | undefined): str
     });
 }
 
-export function timeRelativeToNow(time: string): string {
+export function timeRelativeToNow(time: string | null | undefined): string {
     if (isNil(time)) {
         return '';
     }
