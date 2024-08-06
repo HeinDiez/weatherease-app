@@ -6,8 +6,7 @@ export const setupSocketIO = (server: any) => {
         cors: {
             origin: process.env.WEATHEREASE_CLIENT_URL,
             methods: ['GET', 'POST'],
-            allowedHeaders: ['Content-Type', 'Authorization'],
-            credentials: false,
+            credentials: true
         },
         transports: ['websocket', 'polling'],
     });
