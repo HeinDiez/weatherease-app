@@ -14,6 +14,10 @@ const customJestConfig = {
     transform: {
         "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
     },
+    testPathIgnorePatterns: [
+        "<rootDir>/tests/",
+        "<rootDir>/tests-examples/"
+    ]
 };
 
 module.exports = createJestConfig(customJestConfig);

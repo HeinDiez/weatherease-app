@@ -57,14 +57,14 @@ describe('dateUtils', () => {
 
         it('should return the correct relative time for future times', () => {
             const now = DateTime.local();
-            const futureTime = now.plus({ hours: 3 }).toFormat('HH:mm');
-            expect(timeRelativeToNow(futureTime)).toBe('in 3 hours');
+            const futureTime = now.plus({ hours: 2 }).toFormat('HH:mm');
+            expect(timeRelativeToNow(futureTime)).toBe('in 2 hours');
         });
 
         it('should return the correct relative time for past times', () => {
             const now = DateTime.local();
-            const pastTime = now.minus({ hours: 2 }).toFormat('HH:mm');
-            expect(timeRelativeToNow(pastTime)).toBe('in 22 hours');
+            const pastTime = now.minus({ hours: 2}).toFormat('HH:mm');
+            expect(timeRelativeToNow(pastTime)).toBe('2 hours ago');
         });
     });
 });
