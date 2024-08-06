@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useMemo} from "react";
 
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/20/solid'
 import { WindIcon, RainIcon, PressureIcon, UvIcon } from '@/components/icons'
@@ -13,17 +13,19 @@ interface StatsProps {
 }
 
 export default function Stats({ wind, pressure, uvIndex } : StatsProps) {
-    const stats = [
-        { id: 1, name: 'Wind Speed', stat: wind, unit:'m/s', icon: WindIcon, change: '2 m/s', changeType: 'decrease' },
-        { id: 2, name: 'Rain Chance', stat: '24', unit:'%', icon: RainIcon, change: '10%', changeType: 'increase' },
-        { id: 3, name: 'Pressure', stat: pressure, unit:'mb', icon: PressureIcon, change: '32 mb', changeType: 'increase' },
-        { id: 4, name: 'Uv Index', stat: uvIndex, unit:'', icon: UvIcon, change: '0,3', changeType: 'decrease' },
-    ]
+    const stats = useMemo(() => {
+        return [
+            { id: 1, name: 'Wind Speed', stat: wind, unit:'m/s', icon: WindIcon, change: '2 m/s', changeType: 'decrease' },
+            { id: 2, name: 'Rain Chance', stat: '24', unit:'%', icon: RainIcon, change: '10%', changeType: 'increase' },
+            { id: 3, name: 'Pressure', stat: pressure, unit:'mb', icon: PressureIcon, change: '32 mb', changeType: 'increase' },
+            { id: 4, name: 'Uv Index', stat: uvIndex, unit:'', icon: UvIcon, change: '0,3', changeType: 'decrease' },
+        ]
+    },[wind, pressure, uvIndex])
 
     return (
         <div>
             <div className='flex justify-between '>
-                <h3 className="text-base font-semibold leading-6 text-gray-900">Today's overview</h3>
+                <h3 className="text-base font-semibold leading-6 text-gray-900">Today&apos;s overview</h3>
 
                 <span className='text-sm text-primary cursor-pointer'>More Details</span>
             </div>
