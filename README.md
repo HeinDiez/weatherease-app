@@ -37,6 +37,21 @@ Clone the repository to your local machine:
 git clone git@github.com:HeinDiez/weatherease-app.git
 cd project-root
 ```
+Setup .env variable on both frontend and backend folders.
+
+./frontend/.env.local
+```
+NEXT_PUBLIC_SERVER_API_URL=http://localhost:4000/
+```
+
+./backend/.env.local
+```
+WEATHERBIT_API_URL='https://api.weatherbit.io/v2.0/current'
+WEATHERBIT_API_KEY=
+
+OPENWEATHER_API_URL='https://tile.openweathermap.org/map/temp_new/'
+OPENWEATHER_API_KEY=
+```
 
 # Step 2: Start the Containers
 
