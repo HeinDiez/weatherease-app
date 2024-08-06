@@ -12,6 +12,8 @@ export const setupSocketIO = (server: any) => {
                 credentials: true
             },
             transports: ['websocket', 'polling'],
+            path: '/api/socket',
+            addTrailingSlash: false
         });
 
         io.on('connection', (socket) => {
