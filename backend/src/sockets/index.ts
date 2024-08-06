@@ -4,9 +4,9 @@ import { handleWeatherSocket } from './weatherSocket';
 export const setupSocketIO = (server: any) => {
     const io = new Server(server, {
         cors: {
-            origin: '*',
+            origin: process.env.WEATHEREASE_CLIENT_URL,
             methods: ['GET', 'POST'],
-            allowedHeaders: ['Content-Type'],
+            allowedHeaders: ['Content-Type', 'Authorization'],
             credentials: false,
         },
         transports: ['websocket', 'polling'],
