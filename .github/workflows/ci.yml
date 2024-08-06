@@ -17,6 +17,9 @@ jobs:
       run:
         working-directory: frontend
 
+    env:
+      NEXT_PUBLIC_SERVER_API_URL: ${{ secrets.NEXT_PUBLIC_SERVER_API_URL }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -39,6 +42,13 @@ jobs:
     defaults:
       run:
         working-directory: backend
+
+    env:
+      WEATHERBIT_API_KEY: ${{ secrets.WEATHERBIT_API_KEY }}
+      WEATHERBIT_API_URL: ${{ secrets.WEATHERBIT_API_URL }}
+      OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+      OPENWEATHER_API_URL: ${{ secrets.OPENWEATHER_API_URL }}
+      WEATHEREASE_CLIENT_URL: ${{ secrets.WEATHEREASE_CLIENT_URL }}
 
     steps:
       - name: Checkout code
